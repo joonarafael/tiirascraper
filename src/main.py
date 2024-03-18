@@ -35,13 +35,13 @@ if __name__ == "__main__":
 
     io_handler.write("[info] History loading finished.")
     io_handler.write(io_constants.BOLD + f"[rslt] History currently includes {len(history)} records.")
-    io_handler.write("[info] Parsing HTML and reading the table...")
+    io_handler.write("[info] Requesting 'https://www.tiira.fi/', parsing HTML, and reading the table...")
 
     parser_handler = HTMLParser(io_handler, io_constants, "https://www.tiira.fi/")
     parsed_records = parser_handler.get_records()
 
     io_handler.write("[info] Parsing finished.")
-    io_handler.write("[info] Performing the record filtering...")
+    io_handler.write("[info] Performing the record filtering against config files and history...")
 
     filter_handler = Filter(io_handler, io_constants, config, history, history_handler)
     filtered_records = filter_handler.filter_records(parsed_records)
@@ -52,3 +52,8 @@ if __name__ == "__main__":
 
     for record in filtered_records:
         io_handler.write(f"       {str(record)}")
+
+    if len(filtered_records) == 0:
+        io_handler.write(f"       (None)")
+
+    
