@@ -1,0 +1,1 @@
+sudo rm -rf ./src/history/history.txt

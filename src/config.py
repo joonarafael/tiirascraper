@@ -1,7 +1,9 @@
 from pathlib import Path
 
 class Config:
-    def __init__(self):
+    def __init__(self, io, io_constants):
+        self.io = io
+        self.io_constants = io_constants
         absolute_path = str(Path(__file__).absolute())
 
         self.path = absolute_path[:len(absolute_path)-9] + "config/"
@@ -9,7 +11,7 @@ class Config:
         self.cities = []
         self.species = []
     
-    def get_cities(self):
+    def read_file_cities(self):
         self.cities_path = self.path + "cities.txt"
 
         try:
@@ -17,12 +19,13 @@ class Config:
                 self.cities = f.read().splitlines()
 
         except Exception as e:
-            print("Error while reading configuration file for cities.")
-            print(e)
-            print("Make sure the file", self.cities_path, "actually exists and is intact.")
-            print("Program execution continues without any configured cities.")
+            self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while reading configuration file for cities.")
+            self.io.write(f"       {str(e)}")
+            self.io.write(f"       Make sure the file '{self.cities_path}' actually exists and is intact.")
+            self.io.write(f"       Additionally ensure the program has required permissions to read the file.")
+            self.io.write(self.io_constants.FG_CYAN + f"       Program execution continues without any configured cities.")
 
-    def get_species(self):
+    def read_file_species(self):
         self.species_path = self.path + "species.txt"
 
         try:
@@ -30,14 +33,15 @@ class Config:
                 self.species = f.read().splitlines()
 
         except Exception as e:
-            print("Error while reading configuration file for species.")
-            print(e)
-            print("Make sure the file", self.species_path, "actually exists and is intact.")
-            print("Program execution continues without any configured species.")
+            self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while reading configuration file for species.")
+            self.io.write(f"       {str(e)}")
+            self.io.write(f"       Make sure the file '{self.species_path}' actually exists and is intact.")
+            self.io.write(f"       Additionally ensure the program has required permissions to read the file.")
+            self.io.write(self.io_constants.FG_CYAN + f"       Program execution continues without any configured species.")
 
     def get_config(self):
-        self.get_cities()
-        self.get_species()
+        self.read_file_cities()
+        self.read_file_species()
 
         return {
             "cities": self.cities,

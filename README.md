@@ -1,15 +1,17 @@
 # PYTHON WEB SCRAPER
 
-## Install Dependencies
+## Install Dependencies and Setup the Project
+
+sudo permissions required.
 
 Start by allowing the execution for the dependency script:
 
 ```
-chmod u+x ./dependencies.sh
+chmod u+x ./setup.sh
 ```
 
 and then run the script with
 
 ```
-./dependencies.sh
+./setup.sh
 ```

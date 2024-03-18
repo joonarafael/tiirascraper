@@ -1,0 +1,25 @@
+{'species': 'Piekana', 'body': 'Salo Halikonlahti 3 (Janne Riihimäki)'}
+{'species': 'Piekana', 'body': 'Salo Halikko, Joensuun kartano,... 2 (Markku Axelsson)'}
+{'species': 'Valkoselkätikka', 'body': 'Heinola Tommola, Sahaniemi 3 (Helena Rönkä)'}
+{'species': 'Punarinta', 'body': 'Parainen Hoggais, Västergård 2 (Turkka Kaukametsä)'}
+{'species': 'Varpunen', 'body': 'Helsinki Lapinlahti 100 (Kim Vinari)'}
+{'species': 'Koskikara', 'body': 'Viitasaari Huopanankoski 14 (Tomi Hakkari, Mari Mäk...)'}
+{'species': 'Lapinpöllö', 'body': 'Ii Pohjoisranta, Mylly 2 (Jouko Kärkkäinen, Matt...)'}
+{'species': 'Punakylkirastas', 'body': 'Hanko Hangon Lintuasema, Halias 97 (Aki Aintila, Ahti Ihon...)'}
+{'species': 'Mustarastas', 'body': 'Hanko Hangon Lintuasema, Halias 269 (Aki Aintila, Ahti Ihon...)'}
+{'species': 'Rautiainen', 'body': 'Hanko Hangon Lintuasema, Halias 3 (Aki Aintila, Ahti Ihon...)'}
+{'species': 'Västäräkki', 'body': 'Hanko Hangon Lintuasema, Halias 1 (Aki Aintila, Ahti Ihon...)'}
+{'species': 'Sepelkyyhky', 'body': 'Hanko Hangon Lintuasema, Halias 315 (Aki Aintila, Ahti Ihon...)'}
+{'species': 'Tylli', 'body': 'Hanko Hangon Lintuasema, Halias 7 (Aki Aintila, Ahti Ihon...)'}
+{'species': 'Lapasorsa', 'body': 'Porvoo Hamarin kallio (Tornberget... 1 (Jari Lehtinen)'}
+{'species': 'Vuorihemppo', 'body': 'Vaasa Sundominlahti,Suvilahden e... 7 (Jan Nygård)'}
+{'species': 'Kiuru', 'body': 'Kemiönsaari Björkboda 1000 (Eino Majaniemi)'}
+{'species': 'Pikku-uikku', 'body': 'Heinola Tommola, Hiidenhauta 1 (Kari Ahtiainen, Timo D...)'}
+{'species': 'Kurki', 'body': 'Rusko Merttelä, Jaosvuori 9 (Kai Kankare)'}
+{'species': 'Merihanhi', 'body': 'Pori Toukari, lato 101 (Petteri Mäkelä)'}
+{'species': 'Kulorastas', 'body': 'Hanko Hangon Lintuasema, Halias 16 (Aki Aintila, Ahti Ihon...)'}
+{'species': 'Laulurastas', 'body': 'Hanko Hangon Lintuasema, Halias 1 (Aki Aintila, Ahti Ihon...)'}
+{'species': 'Punarinta', 'body': 'Hanko Hangon Lintuasema, Halias 19 (Aki Aintila, Ahti Ihon...)'}
+{'species': 'Peukaloinen', 'body': 'Hanko Hangon Lintuasema, Halias 3 (Aki Aintila, Ahti Ihon...)'}
+{'species': 'Luotokirvinen', 'body': 'Hanko Hangon Lintuasema, Halias 1 (Aki Aintila, Ahti Ihon...)'}
+{'species': 'Lehtokurppa', 'body': 'Hanko Hangon Lintuasema, Halias 26 (Aki Aintila, Ahti Ihon...)'}
