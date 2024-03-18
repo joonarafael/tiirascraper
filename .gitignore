@@ -1,2 +1,3 @@
 src/config/*
 src/history/*
+*/__pycache__/
