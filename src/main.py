@@ -15,7 +15,7 @@ if __name__ == "__main__":
     config_handler = Config(io_handler, io_constants)
     config = config_handler.get_config()
 
-    io_handler.write("[info] Configuration loading finished.")
+    io_handler.write("[info] Configuration loading finished. Relaunch the software for a new config.")
 
     city_count = len(config["cities"])
 
@@ -33,7 +33,6 @@ if __name__ == "__main__":
     history_handler = History(io_handler, io_constants)
     history = history_handler.get_history()
 
-    io_handler.write("[info] History loading finished.")
     io_handler.write(io_constants.BOLD + f"[rslt] History currently includes {len(history)} records.")
     io_handler.write("[info] Requesting 'https://www.tiira.fi/', parsing HTML, and reading the table...")
 
@@ -48,10 +47,13 @@ if __name__ == "__main__":
 
     io_handler.write(f"[info] Filtering finished.")
     io_handler.write(io_constants.BOLD + f"[rslt] Found a total of {len(filtered_records)} records that match the allowed cities & species.")
-    io_handler.write(io_constants.BOLD + "[rslt] The filtered records are:")
+    io_handler.write(io_constants.BOLD + "[rslt] " + io_constants.BG_MAGENTA + "THE FILTERED RECORDS ARE:")
 
-    for record in filtered_records:
-        io_handler.write(f"       {str(record)}")
+    for i, record in enumerate(filtered_records):
+        if i % 2 == 0:
+            io_handler.write(io_constants.FG_CYAN + f"  {str(i).zfill(4)} {str(record)}")
+        else:
+            io_handler.write(f"  {str(i).zfill(4)} {str(record)}")
 
     if len(filtered_records) == 0:
         io_handler.write(f"       (None)")

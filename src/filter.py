@@ -60,6 +60,7 @@ class Filter:
         return filtered_records
     
     def filter_records(self, records):
+        self.history = self.history_handler.get_history()
         filtered_records = self.filter_records_against_config(records)
         filtered_records = self.filter_records_against_history(filtered_records)
         

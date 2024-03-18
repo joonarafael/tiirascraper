@@ -13,17 +13,37 @@ class History:
         self.history = []
         self.creation_time = []
 
+        try:
+            with open(self.creation_path, "r") as f:
+                self.io.write(f"[info] History creation time file has been found and succesfully opened.")
+        
+        except Exception as e:
+            self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while reading the history creation file.")
+            self.io.write(f"       {str(e)}")
+            self.io.write(f"       Make sure the file '{self.creation_path}' actually exists and is intact.")
+            self.io.write(f"       Additionally ensure the program has required permissions to read and write to the file.")
+            self.io.write(self.io_constants.BOLD + self.io_constants.FG_CYAN + f"       Program will launch without considering the possiblity of expired history.")
+            self.io.write(self.io_constants.FG_CYAN + f"       However, the program will continue to try to write new history.")
+
+        try:
+            with open(self.path, "r") as f:
+                self.io.write(f"[info] History file has been found and succesfully opened.")
+        
+        except Exception as e:
+            self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while reading the history file.")
+            self.io.write(f"       {str(e)}")
+            self.io.write(f"       Make sure the file '{self.path}' actually exists and is intact.")
+            self.io.write(f"       Additionally ensure the program has required permissions to read and write to the file.")
+            self.io.write(self.io_constants.BOLD + self.io_constants.FG_CYAN + f"       Program will launch without any previous history.")
+            self.io.write(self.io_constants.FG_CYAN + f"       However, the program will continue to try to write new history.")
+
     def read_file_creation(self):
         try:
             with open(self.creation_path, "r") as f:
                 self.creation_time = f.read().splitlines()
         
-        except Exception as e:
-            self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while reading the history creation time file.")
-            self.io.write(f"       {str(e)}")
-            self.io.write(f"       Make sure the file {self.creation_path} actually exists and is intact.")
-            self.io.write(f"       Additionally ensure the program has required permissions to read the file.")
-            self.io.write(self.io_constants.FG_CYAN + f"       Program execution continues without considering expired history.")
+        except Exception:
+            pass
 
     def get_history_creation_time(self):
         self.creation_time = []
@@ -53,12 +73,8 @@ class History:
             with open(self.path, "r") as f:
                 self.history = f.read().splitlines()
         
-        except Exception as e:
-            self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while reading the history file.")
-            self.io.write(f"       {str(e)}")
-            self.io.write(f"       Make sure the file {self.path} actually exists and is intact.")
-            self.io.write(f"       Additionally ensure the program has required permissions to read the file.")
-            self.io.write(self.io_constants.FG_CYAN + f"       Program execution continues without any history.")
+        except Exception:
+            pass
 
     def create_history_file(self):
         try:
@@ -69,11 +85,8 @@ class History:
 
                     d.write(f"{date}")
         
-        except Exception as e:
-            self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while creating the history file.")
-            self.io.write(f"       {str(e)}")
-            self.io.write(f"        Ensure the program has required permissions to write the file.")
-            self.io.write(self.io_constants.FG_CYAN + f"       Program execution continues without any history.")
+        except Exception:
+            pass
     
     def write_history(self, addition):
         if addition:
@@ -87,12 +100,8 @@ class History:
                     with open(self.path, "a") as f:
                         f.write(f"{str(addition)}\n")
                 
-                except Exception as e:
-                    self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while writing to the history to file.")
-                    self.io.write(f"       {str(e)}")
-                    self.io.write(f"       Make sure the file {self.path} actually exists and is intact.")
-                    self.io.write(f"       Additionally ensure the program has required permissions to read and write to the file.")
-                    self.io.write(self.io_constants.FG_CYAN + f"       Program execution continues without the recorded history.")
+                except Exception:
+                    pass
             
             else:
                 self.create_history_file()
@@ -101,12 +110,8 @@ class History:
                     with open(self.path, "a") as f:
                         f.write(f"{str(addition)}\n")
                 
-                except Exception as e:
-                    self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while writing to the history to file.")
-                    self.io.write(f"       {str(e)}")
-                    self.io.write(f"       Make sure the file {self.path} actually exists and is intact.")
-                    self.io.write(f"       Additionally ensure the program has required permissions to read and write to the file.")
-                    self.io.write(self.io_constants.FG_CYAN + f"       Program execution continues without the recorded history.")
+                except Exception:
+                    pass
 
     def get_history(self):
         self.history = []
