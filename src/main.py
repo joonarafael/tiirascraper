@@ -43,7 +43,7 @@ if __name__ == "__main__":
     io_handler.write("[info] Parsing finished.")
     io_handler.write("[info] Performing the record filtering against config files and history...")
 
-    filter_handler = Filter(io_handler, io_constants, config, history, history_handler)
+    filter_handler = Filter(io_handler, io_constants, config, history_handler)
     filtered_records = filter_handler.filter_records(parsed_records)
 
     io_handler.write(f"[info] Filtering finished.")

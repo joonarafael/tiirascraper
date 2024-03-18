@@ -11,7 +11,43 @@ class History:
         self.creation_path = absolute_path[:len(absolute_path)-10] + "history/creation.txt"
 
         self.history = []
+        self.creation_time = []
+
+    def read_file_creation(self):
+        try:
+            with open(self.creation_path, "r") as f:
+                self.creation_time = f.read().splitlines()
+        
+        except Exception as e:
+            self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while reading the history creation time file.")
+            self.io.write(f"       {str(e)}")
+            self.io.write(f"       Make sure the file {self.creation_path} actually exists and is intact.")
+            self.io.write(f"       Additionally ensure the program has required permissions to read the file.")
+            self.io.write(self.io_constants.FG_CYAN + f"       Program execution continues without considering expired history.")
+
+    def get_history_creation_time(self):
+        self.creation_time = []
+        self.read_file_creation()
+
+        if self.creation_time and len(self.creation_time) > 0:
+            return self.creation_time[0]
+        
+        return None
     
+    def check_if_history_is_expired(self):
+        creation_time = self.get_history_creation_time()
+
+        if creation_time:
+            current_time = datetime.now()
+            current_date = current_time.date()
+
+            if str(creation_time) != str(current_date):
+                self.io.write(self.io_constants.BOLD + self.io_constants.BG_MAGENTA + "[info] History has expired!")
+                self.io.write(f"       Resetting history.")
+                return True
+        
+        return False
+
     def read_file_history(self):
         try:
             with open(self.path, "r") as f:
@@ -29,12 +65,9 @@ class History:
             with open(self.path, "w") as f:
                 with open(self.creation_path, "w") as d:
                     time = datetime.now()
-                    current_time = time.strftime("%H:%M:%S")
-
                     date = time.date()
 
-                    d.write(f"{date}\n")
-                    d.write(f"{current_time}")
+                    d.write(f"{date}")
         
         except Exception as e:
             self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while creating the history file.")
@@ -47,6 +80,9 @@ class History:
             self.read_file_history()
 
             if self.history and len(self.history) > 0:
+                if self.check_if_history_is_expired():
+                    self.create_history_file()
+
                 try:
                     with open(self.path, "a") as f:
                         f.write(f"{str(addition)}\n")
@@ -73,6 +109,10 @@ class History:
                     self.io.write(self.io_constants.FG_CYAN + f"       Program execution continues without the recorded history.")
 
     def get_history(self):
-            self.read_file_history()
+        self.history = []
 
-            return self.history
+        if self.check_if_history_is_expired():
+            self.create_history_file()
+
+        self.read_file_history()
+        return self.history

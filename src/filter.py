@@ -1,11 +1,11 @@
 class Filter:
-    def __init__(self, io, io_constants, config, history, history_handler):
+    def __init__(self, io, io_constants, config, history_handler):
         self.io = io
         self.io_constants = io_constants
         self.config_cities = config["cities"]
         self.config_species = config["species"]
-        self.history = history
         self.history_handler = history_handler
+        self.history = self.history_handler.get_history()
     
     def check_city_against_config(self, body):
         if self.config_cities and len(self.config_cities) > 0:
