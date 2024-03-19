@@ -4,18 +4,22 @@ from config import Config
 from htmlparser import HTMLParser
 from history import History
 from filter import Filter
+import schedule 
+import time
+from datetime import datetime
 
-if __name__ == "__main__":
+def application():
     io_handler = PrettyIO()
     io_constants = IOConstants()
 
-    io_handler.write(f'       ' + io_constants.BOLD + 'LAUNCHING ' + io_constants.FG_GREEN + 'TIIRASCRAPER')
+    io_handler.write(io_constants.BOLD + f"[time] {str(datetime.now())}")
+    io_handler.write('[info] ' + io_constants.BOLD + io_constants.FG_GREEN + 'TIIRASCRAPER')
     io_handler.write("[info] Loading configs...")
 
     config_handler = Config(io_handler, io_constants)
     config = config_handler.get_config()
 
-    io_handler.write("[info] Configuration loading finished. Relaunch the software for a new config.")
+    io_handler.write("[info] Configuration loading finished.")
 
     city_count = len(config["cities"])
 
@@ -46,7 +50,7 @@ if __name__ == "__main__":
     filtered_records = filter_handler.filter_records(parsed_records)
 
     io_handler.write(f"[info] Filtering finished.")
-    io_handler.write(io_constants.BOLD + f"[rslt] Found a total of {len(filtered_records)} records that match the allowed cities & species.")
+    io_handler.write(io_constants.BOLD + f"[rslt] Found a total of {len(filtered_records)} new records that match the allowed cities & species.")
     io_handler.write(io_constants.BOLD + "[rslt] " + io_constants.BG_MAGENTA + "THE FILTERED RECORDS ARE:")
 
     for i, record in enumerate(filtered_records):
@@ -58,4 +62,11 @@ if __name__ == "__main__":
     if len(filtered_records) == 0:
         io_handler.write(f"       (None)")
 
+if __name__ == "__main__":
+    application()
+    schedule.every(5).minutes.do(application) 
     
+    while True:
+        schedule.run_pending() 
+        print("[info] Waiting ... Terminate process at anytime with 'Ctrl + C'.")
+        time.sleep(60) 
