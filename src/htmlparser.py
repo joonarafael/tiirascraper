@@ -16,6 +16,8 @@ class HTMLParser:
         except Exception as e:
             self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + f"[ERRR] Error while parsing HTML page '{self.url}'.")
             self.io.write(f"       {str(e)}.")
+            self.io.write(self.io_constants.BOLD + self.io_constants.FG_CYAN + f"       Ensure the device has a working network connection!")
+            self.io.write(self.io_constants.FG_CYAN + f"       Retrying in 5 minutes.")
     
     def get_table(self):
         try:
