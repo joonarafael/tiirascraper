@@ -1,12 +1,15 @@
+import schedule 
+import time
+from datetime import datetime
+
 from prettyio.prettyio import PrettyIO
 from prettyio.ioconstants import IOConstants
 from config import Config
 from htmlparser import HTMLParser
 from history import History
 from filter import Filter
-import schedule 
-import time
-from datetime import datetime
+from messenger import Messenger
+from formatter import Formatter
 
 def application():
     io_handler = PrettyIO()
@@ -14,6 +17,9 @@ def application():
 
     io_handler.write(io_constants.BOLD + f"[time] {str(datetime.now())}")
     io_handler.write('[info] ' + io_constants.BOLD + io_constants.FG_GREEN + 'TIIRASCRAPER')
+
+    # START LOADING CONFIGS AND HISTORY
+
     io_handler.write("[info] Loading configs...")
 
     config_handler = Config(io_handler, io_constants)
@@ -38,6 +44,9 @@ def application():
     history = history_handler.get_history()
 
     io_handler.write(io_constants.BOLD + f"[rslt] History currently includes {len(history)} records.")
+
+    # ACTUAL HTML REQUEST AND DATA PARSING + FILTERING
+
     io_handler.write("[info] Requesting 'https://www.tiira.fi/', parsing HTML, and reading the table...")
 
     parser_handler = HTMLParser(io_handler, io_constants, "https://www.tiira.fi/")
@@ -61,6 +70,15 @@ def application():
 
     if len(filtered_records) == 0:
         io_handler.write(f"       (None)")
+
+    # MESSAGE SENDING LOGIC
+        
+    message_handler = Messenger(io_handler, io_constants)
+    formatting_handler = Formatter()
+        
+    if len(filtered_records) > 0:
+        formatted_records = formatting_handler.format_records(filtered_records)
+        message_handler.send_message(formatted_records)
 
 if __name__ == "__main__":
     application()

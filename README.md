@@ -56,3 +56,26 @@ Sipoo
 ```
 
 In this case, only records for these listed cities would get processed.
+
+## Messager Bot
+
+If you wish to use a Telegram bot, create your own bot and add the API key to a file named `env.py` within `./src/`. Also add the recipient ID(s) to the `CHAT_IDS` constant.
+
+**How to get the Telegram ID?**
+
+1. Send a real message (no commands or anything) to the bot.
+
+2. Fetch your ID with an HTTP request. With Python, it can be achieved like this:
+
+```
+import requests
+TOKEN = "{your_bot_api_token}"
+
+url = f"https://api.telegram.org/bot{TOKEN}/getUpdates"
+r = requests.get(url).json()
+print(r)
+```
+
+You may now retrieve your ID from the JSON object `r.result.chat.id`.
+
+3. Add the ID to the `CHAT_IDS` constant. Now you will receive the automated messages.
