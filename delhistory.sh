@@ -1,2 +1,3 @@
-sudo rm -rf ./src/history/history.txt
-sudo rm -rf ./src/history/creation.txt
+rm -rf ./src/history/history.txt
+rm -rf ./src/history/creation.txt
+echo "History deleted successfully."

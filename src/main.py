@@ -64,15 +64,16 @@ def application():
 
     for i, record in enumerate(filtered_records):
         if i % 2 == 0:
-            io_handler.write(io_constants.FG_CYAN + f"  {str(i).zfill(4)} {str(record)}")
+            io_handler.write(io_constants.FG_CYAN + f"  {str(i + 1).zfill(4)} {str(record)}")
         else:
-            io_handler.write(f"  {str(i).zfill(4)} {str(record)}")
+            io_handler.write(f"  {str(i + 1).zfill(4)} {str(record)}")
 
     if len(filtered_records) == 0:
         io_handler.write(f"       (None)")
 
     # MESSAGE SENDING LOGIC
-        
+    # COMMENT OUT IF YOU DON'T HAVE THE TELEGRAM BOT INITIALIZED!
+    
     message_handler = Messenger(io_handler, io_constants)
     formatting_handler = Formatter()
         
@@ -86,5 +87,5 @@ if __name__ == "__main__":
     
     while True:
         schedule.run_pending() 
-        print("[info] Waiting ... Terminate process at anytime with 'Ctrl + C'.")
+        print("[info] Waiting... Terminate process at anytime with 'Ctrl + C'.")
         time.sleep(60) 
