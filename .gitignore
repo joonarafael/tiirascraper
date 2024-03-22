@@ -1,4 +1,6 @@
-src/config/*
-src/history/*
+src/config/cities.txt
+src/config/species.txt
+src/history/history.txt
+src/history/creation.txt
 **/__pycache__/ 
 env.py

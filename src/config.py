@@ -18,6 +18,9 @@ class Config:
             with open(self.cities_path, "r") as f:
                 self.cities = f.read().splitlines()
 
+                for i, city in enumerate(self.cities):
+                    self.cities[i] = city.lower()
+
         except Exception as e:
             self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while reading configuration file for cities.")
             self.io.write(f"       {str(e)}")
@@ -31,6 +34,9 @@ class Config:
         try:
             with open(self.species_path, "r") as f:
                 self.species = f.read().splitlines()
+
+                for i, species in enumerate(self.species):
+                    self.species[i] = species.lower()
 
         except Exception as e:
             self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while reading configuration file for species.")

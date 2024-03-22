@@ -16,7 +16,6 @@ def application():
     io_constants = IOConstants()
 
     io_handler.write(io_constants.BOLD + f"[time] {str(datetime.now())}")
-    io_handler.write('[info] ' + io_constants.BOLD + io_constants.FG_GREEN + 'TIIRASCRAPER')
 
     # START LOADING CONFIGS AND HISTORY
 
@@ -60,7 +59,7 @@ def application():
 
     io_handler.write(f"[info] Filtering finished.")
     io_handler.write(io_constants.BOLD + f"[rslt] Found a total of {len(filtered_records)} new records that match the allowed cities & species.")
-    io_handler.write(io_constants.BOLD + "[rslt] " + io_constants.BG_MAGENTA + "THE FILTERED RECORDS ARE:")
+    io_handler.write(io_constants.BOLD + io_constants.BG_MAGENTA + "[rslt] THE FILTERED RECORDS ARE:")
 
     for i, record in enumerate(filtered_records):
         if i % 2 == 0:

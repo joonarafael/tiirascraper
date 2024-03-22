@@ -78,19 +78,8 @@ located at `./src/env.py`. **Please comment out the message sending logic out fr
 
 **How to get the Telegram ID?**
 
-1. Send a real message (no commands or anything) to your bot.
+1. Send a "/start" message to the Telegram Raw Data bot at @_RawDataBot_.
 
-2. Fetch your ID with an HTTP request. With Python, it can be achieved like this:
-
-```
-import requests
-TOKEN = "{your_bot_api_token}"
-
-url = f"https://api.telegram.org/bot{TOKEN}/getUpdates"
-response = requests.get(url).json()
-print(response)
-```
-
-You may now retrieve your ID from the JSON object `response.result.chat.id`.
+2. Read your ID from the response message (JSON) from `message.chat.id`.
 
 3. Add the ID to the `CHAT_IDS` constant. Now you will receive the automated messages.

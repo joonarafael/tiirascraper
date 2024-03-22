@@ -15,7 +15,7 @@ class History:
 
         try:
             with open(self.creation_path, "r") as f:
-                self.io.write(f"[info] History creation time file has been found and succesfully opened.")
+                self.io.write(f"[info] History creation time file has been found and successfully opened.")
         
         except Exception as e:
             self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while reading the history creation file.")
@@ -27,7 +27,7 @@ class History:
 
         try:
             with open(self.path, "r") as f:
-                self.io.write(f"[info] History file has been found and succesfully opened.")
+                self.io.write(f"[info] History file has been found and successfully opened.")
         
         except Exception as e:
             self.io.write(self.io_constants.BOLD + self.io_constants.BG_RED + "[ERRR] Error while reading the history file.")

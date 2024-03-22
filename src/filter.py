@@ -19,9 +19,15 @@ class Filter:
 
         return True
     
-    def check_species_against_config(self, species):
+    def check_species_against_config(self, species_input):
         if self.config_species and len(self.config_species) > 0:
-            return species in self.config_species
+            result = False
+            
+            for species in self.config_species:
+                if species in species_input:
+                    result = True
+            
+            return result
         
         return True
     
@@ -45,7 +51,7 @@ class Filter:
         filtered_records = []
         
         for record in records:
-            if self.check_city_against_config(record["body"]) and self.check_species_against_config(record["species"]):
+            if self.check_city_against_config(record["body"].lower()) and self.check_species_against_config(record["species"].lower()):
                 filtered_records.append(record)
         
         return filtered_records
