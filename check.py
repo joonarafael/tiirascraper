@@ -4,7 +4,6 @@ import requests
 import schedule
 from pathlib import Path
 
-print("If no error was raised, you're good to go!")
-print("Required dependencies seem to be alright.")
-print("Run the program with the following command:")
-print("./run.sh")
+print("If no error was raised, you're good to go! Required dependencies seem to be alright.")
+print("Before running the project, set your configuration files and initialize environment variables!")
+print("Consult the './docs/user_manual.md' file for more information.")
