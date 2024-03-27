@@ -120,4 +120,8 @@ class History:
             self.create_history_file()
 
         self.read_file_history()
+
+        if len(self.history) == 0:
+            self.create_history_file()
+
         return self.history
