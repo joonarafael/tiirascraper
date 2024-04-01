@@ -1,6 +1,6 @@
 # USER MANUAL
 
-## Before Running (IMPORTANT!)
+## Before Running
 
 Create your _config files_ for the filtering functionality into the subdirectory `./src/config/`. The program exclusively searches **only** for the files named `cities.txt` and `species.txt`.
 
@@ -19,7 +19,7 @@ Kirkkonummi
 
 In this case, only records for these listed cities would get processed.
 
-## _Telegram_ Bot & Environment Variables
+## _Telegram_ Bot & Environment Variables (IMPORTANT!)
 
 If you wish to use a _Telegram_ bot, create your own bot and add the API key to a file `./src/env.py` (check the imports for `./src/messenger.py`). Also add the recipient ID(s) to the `CHAT_IDS` constant.
 
