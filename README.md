@@ -1,6 +1,6 @@
 # TIIRASCRAPER (PYTHON WEB SCRAPER)
 
-Check the [Installation Manual](https://github.com/joonarafael/tiirascraper/blob/main/docs/installation_manual.md "Installation Manual") and the [User Manual](https://github.com/joonarafael/tiirascraper/blob/main/docs/user_manual.md "User Manual") before advancing further.
+Check the [Installation Manual](https://github.com/joonarafael/tiirascraper/blob/main/docs/installation_manual.md "Installation Manual") and the [User Manual](https://github.com/joonarafael/tiirascraper/blob/main/docs/user_manual.md "User Manual") before advancing further. Even with correct dependencies installed, the application will run into a runtime error if you do not set up the proper environment variables first.
 
 ## About
 

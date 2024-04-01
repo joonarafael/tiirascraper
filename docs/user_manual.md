@@ -1,6 +1,6 @@
 # USER MANUAL
 
-## Before Running
+## Before Running (IMPORTANT!)
 
 Create your _config files_ for the filtering functionality into the subdirectory `./src/config/`. The program exclusively searches **only** for the files named `cities.txt` and `species.txt`.
 
