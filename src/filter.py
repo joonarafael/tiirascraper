@@ -8,11 +8,14 @@ class Filter:
         self.history = self.history_handler.get_history()
     
     def check_city_against_config(self, body):
+        blankspace_split = body.split()
+        extracted_city = blankspace_split[0]
+
         if self.config_cities and len(self.config_cities) > 0:
             result = False
             
             for city in self.config_cities:
-                if city in body:
+                if city in extracted_city:
                     result = True
             
             return result
@@ -20,11 +23,14 @@ class Filter:
         return True
     
     def check_species_against_config(self, species_input):
+        blankspace_split = species_input.split()
+        extracted_species = blankspace_split[0]
+
         if self.config_species and len(self.config_species) > 0:
             result = False
             
             for species in self.config_species:
-                if species in species_input:
+                if species in extracted_species:
                     result = True
             
             return result
