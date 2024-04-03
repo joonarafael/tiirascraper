@@ -4,3 +4,7 @@ src/history/history.txt
 src/history/creation.txt
 **/__pycache__/ 
 env.py
+htmlcov
+.coverage
+coverage.xml
+.pytest_cache

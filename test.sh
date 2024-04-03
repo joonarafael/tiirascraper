@@ -1,1 +1,3 @@
-pytest ./__tests__/test_config.py
+coverage run --branch -m pytest ./__tests__/
+coverage report -m
+coverage xml
