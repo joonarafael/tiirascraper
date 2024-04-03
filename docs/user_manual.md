@@ -79,3 +79,11 @@ If need be, history can be deleted by executing
 The program does not support any other automated history deletion options (as it is not an intended use-case). However, the associated history files may be deleted manually at `./src/history/history.txt` and `./src/history/creation.txt`.
 
 Program will reset the history at 00:00 every day.
+
+## Automated Testing
+
+Automated tests can be executed with
+
+```
+./test.sh
+```

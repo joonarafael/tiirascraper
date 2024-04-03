@@ -4,7 +4,7 @@ Check the [Installation Manual](https://github.com/joonarafael/tiirascraper/blob
 
 ## About
 
-This is a simple web scraper software built with _Python_.
+This is a simple web scraper software built with _Python_. Automated testing included as part of CI pipeline. Coverage report uploaded to [Codecov](https://app.codecov.io/gh/joonarafael/tiirascraper/tree/main/ "Codecov Coverage Report").
 
 It fetches the _index_ page of a popular bird observation site [Tiira](https://www.tiira.fi/ "Tiira.fi") and parses the latest most interesting bird observation records.
 
