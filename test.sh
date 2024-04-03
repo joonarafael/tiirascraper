@@ -1,0 +1,1 @@
+pytest ./__tests__/test_config.py
