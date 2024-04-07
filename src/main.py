@@ -42,7 +42,7 @@ def application():
     history_handler = History(io_handler, io_constants)
     history = history_handler.get_history()
 
-    io_handler.write(io_constants.BOLD + f"[rslt] History currently includes {len(history)} records.")
+    io_handler.write(io_constants.BOLD + f"[rslt] History currently includes {len(history)} record(s).")
 
     # ACTUAL HTML REQUEST AND DATA PARSING + FILTERING
 
@@ -58,7 +58,7 @@ def application():
     filtered_records = filter_handler.filter_records(parsed_records)
 
     io_handler.write(f"[info] Filtering finished.")
-    io_handler.write(io_constants.BOLD + f"[rslt] Found a total of {len(filtered_records)} new records that match the allowed cities & species.")
+    io_handler.write(io_constants.BOLD + f"[rslt] Found a total of {len(filtered_records)} new record(s) that match the allowed cities & species.")
     io_handler.write(io_constants.BOLD + io_constants.BG_MAGENTA + "[rslt] THE FILTERED RECORDS ARE:")
 
     for i, record in enumerate(filtered_records):

@@ -15,7 +15,7 @@ class Filter:
             result = False
             
             for city in self.config_cities:
-                if city in extracted_city:
+                if city == extracted_city:
                     result = True
             
             return result
@@ -30,7 +30,7 @@ class Filter:
             result = False
             
             for species in self.config_species:
-                if species in extracted_species:
+                if species == extracted_species:
                     result = True
             
             return result

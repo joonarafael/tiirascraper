@@ -19,7 +19,11 @@ Kirkkonummi
 
 In this case, only records for these listed cities would get processed.
 
-## _Telegram_ Bot & Environment Variables (IMPORTANT!)
+**_IMPORTANT_**: The program will parse the cities and species from the observations table by cutting the string at first space character. Do not include any space characters in your config file. **Subspecies (or city districts) cannot be thus specified**.
+
+**This means that** if the parsed observation from _Tiira_ is, for example, `Sepelhanhi (alalaji bernicla)`, program will only consider `Sepelhanhi`. Filtering functions will only search for an exact match from your allowed species list.
+
+## _Telegram_ Bot & Environment Variables
 
 If you wish to use a _Telegram_ bot, create your own bot and add the API key to a file `./src/env.py` (check the imports for `./src/messenger.py`). Also add the recipient ID(s) to the `CHAT_IDS` constant.
 
