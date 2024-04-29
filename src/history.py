@@ -10,7 +10,6 @@ class History:
         self.path = absolute_path[:len(absolute_path)-10] + "history/history.txt"
         self.creation_path = absolute_path[:len(absolute_path)-10] + "history/creation.txt"
 
-        self.history = []
         self.creation_time = []
 
         try:
@@ -22,7 +21,7 @@ class History:
             self.io.write(f"       {str(e)}")
             self.io.write(f"       Make sure the file '{self.creation_path}' actually exists and is intact.")
             self.io.write("       Additionally ensure the program has required permissions to read and write to the file.")
-            self.io.write(self.io_constants.BOLD + self.io_constants.FG_CYAN + "       Program will launch without considering the possiblity of expired history.")
+            self.io.write(self.io_constants.BOLD + self.io_constants.FG_CYAN + "       Program will launch without considering the possibility of expired history.")
             self.io.write(self.io_constants.FG_CYAN + "       However, the program will continue to try to write new history.")
 
         try:
@@ -78,7 +77,7 @@ class History:
 
     def create_history_file(self):
         try:
-            with open(self.path, "w") as f:
+            with open(self.path, "w") as _:
                 with open(self.creation_path, "w") as d:
                     time = datetime.now()
                     date = time.date()
@@ -114,8 +113,6 @@ class History:
                     pass
 
     def get_history(self):
-        self.history = []
-
         if self.check_if_history_is_expired():
             self.create_history_file()
 

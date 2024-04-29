@@ -31,7 +31,7 @@ def temp_files():
         yield cities_path, species_path
 
 def test_config_read_files(temp_files):
-    cities_path, species_path = temp_files
+    cities_path, _ = temp_files
     config = Config(MockIO(), MockIOConstants())
 
     config.path = os.path.dirname(cities_path) + "/"
@@ -43,7 +43,7 @@ def test_config_read_files(temp_files):
     assert config.species == ["species1", "species2", "species3"]
 
 def test_config_get_config(temp_files):
-    cities_path, species_path = temp_files
+    cities_path, _ = temp_files
     config = Config(MockIO(), MockIOConstants())
     
     config.path = os.path.dirname(cities_path) + "/"

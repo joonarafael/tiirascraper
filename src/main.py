@@ -57,7 +57,7 @@ def application():
     filter_handler = Filter(io_handler, io_constants, config, history_handler)
     filtered_records = filter_handler.filter_records(parsed_records)
 
-    io_handler.write(f"[info] Filtering finished.")
+    io_handler.write("[info] Filtering finished.")
     io_handler.write(io_constants.BOLD + f"[rslt] Found a total of {len(filtered_records)} new record(s) that match the allowed cities & species.")
     io_handler.write(io_constants.BOLD + io_constants.BG_MAGENTA + "[rslt] THE FILTERED RECORDS ARE:")
 
@@ -68,7 +68,7 @@ def application():
             io_handler.write(f"  {str(i + 1).zfill(4)} {str(record)}")
 
     if len(filtered_records) == 0:
-        io_handler.write(f"       (None)")
+        io_handler.write("       (None)")
 
     # MESSAGE SENDING LOGIC
     # COMMENT OUT IF YOU DON'T HAVE THE TELEGRAM BOT INITIALIZED!
@@ -79,6 +79,8 @@ def application():
     if len(filtered_records) > 0:
         formatted_records = formatting_handler.format_records(filtered_records)
         message_handler.send_message(formatted_records)
+
+    # MESSAGE SENDING LOGIC ENDS
 
 if __name__ == "__main__":
     application()
