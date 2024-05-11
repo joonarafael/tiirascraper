@@ -36,7 +36,7 @@ CHAT_IDS = ["1234567890", "0987654321"]
 
 located at `./src/env.py`.
 
-**_IMPORTANT_**: **Comment out the message sending logic out from** `main.py` **if you do not have the Telegram bot and/or environment initialized**. This file will be created automatically with empty variables during the execution of the automated dependency installation script `setup.sh`, but if your installation was unsuccessful, this file might not yet exist. Program will continue with environment variables with empty strings, but execution will halt to a runtime exception if the file is missing or environment variables are corrupted in some other way!
+**_IMPORTANT_**: **Comment out the message sending logic out from** `main.py` **if you do not have the Telegram bot and/or environment initialized**. The environment file will be created automatically with empty variables during the execution of the automated dependency installation script `setup.sh`, but if your installation was unsuccessful, this file might not yet exist. Program will continue with environment variables with empty strings, but execution will halt to a runtime exception if the file is missing or environment variables are corrupted in some other way!
 
 **How to get the Telegram ID?**
 
