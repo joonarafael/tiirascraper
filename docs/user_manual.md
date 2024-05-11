@@ -25,7 +25,7 @@ In this case, only records for these listed cities would get processed.
 
 ## _Telegram_ Bot & Environment Variables
 
-If you wish to use a _Telegram_ bot, create your own bot and add the API key to a file `./src/env.py` (check the imports for `./src/messenger.py`). Also add the recipient ID(s) to the `CHAT_IDS` constant.
+If you wish to use a _Telegram_ bot, create your own bot and add the API key to the file `./src/env.py` (check the imports for `./src/messenger.py`). Also add the recipient ID(s) to the `CHAT_IDS` constant.
 
 An example `env.py` would look like this:
 
@@ -36,7 +36,7 @@ CHAT_IDS = ["1234567890", "0987654321"]
 
 located at `./src/env.py`.
 
-**_IMPORTANT_**: **Comment out the message sending logic out from** `main.py` **if you do not have the Telegram bot and/or environment initialized**. Program execution will halt to a runtime exception if environment variables are not specified!
+**_IMPORTANT_**: **Comment out the message sending logic out from** `main.py` **if you do not have the Telegram bot and/or environment initialized**. This file will be created automatically with empty variables during the execution of the automated dependency installation script `setup.sh`, but if your installation was unsuccessful, this file might not yet exist. Program will continue with environment variables with empty strings, but execution will halt to a runtime exception if the file is missing or environment variables are corrupted in some other way!
 
 **How to get the Telegram ID?**
 

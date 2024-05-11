@@ -22,6 +22,12 @@ Install all required dependencies by executing the bash script
 
 located at root. Installation requires _sudo_ permissions.
 
+**Remember**! Never execute unknown bash scripts on your machine! Before executing, read the content of the script first with
+
+```
+cat ./setup.sh
+```
+
 **Remember**! Execution rights for a bash script can be given with
 
 ```
