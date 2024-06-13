@@ -1,11 +1,12 @@
 class Filter:
-    def __init__(self, io, io_constants, config, history_handler):
+    def __init__(self, io, io_constants, config, history_handler, filter_cities):
         self.io = io
         self.io_constants = io_constants
         self.config_cities = config["cities"]
         self.config_species = config["species"]
         self.history_handler = history_handler
         self.history = self.history_handler.get_history()
+        self.filter_cities = filter_cities
     
     def check_city_against_config(self, body):
         blankspace_split = body.split()
@@ -56,9 +57,14 @@ class Filter:
     def filter_records_against_config(self, records):
         filtered_records = []
         
-        for record in records:
-            if self.check_city_against_config(record["body"].lower()) and self.check_species_against_config(record["species"].lower()):
-                filtered_records.append(record)
+        if self.filter_cities == "true":
+            for record in records:
+                if self.check_city_against_config(record["body"].lower()) and self.check_species_against_config(record["species"].lower()):
+                    filtered_records.append(record)
+        else:
+            for record in records:
+                if self.check_species_against_config(record["species"].lower()):
+                    filtered_records.append(record)
         
         return filtered_records
 

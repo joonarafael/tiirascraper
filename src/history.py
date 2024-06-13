@@ -7,9 +7,10 @@ class History:
         self.io_constants = io_constants
         absolute_path = str(Path(__file__).absolute())
 
-        self.path = absolute_path[:len(absolute_path)-10] + "history/history.txt"
-        self.creation_path = absolute_path[:len(absolute_path)-10] + "history/creation.txt"
+        self.path = absolute_path[:len(absolute_path)-11] + "/history/history.txt"
+        self.creation_path = absolute_path[:len(absolute_path)-11] + "/history/creation.txt"
 
+        self.history = []
         self.creation_time = []
 
         try:

@@ -1,5 +1,7 @@
+from pathlib import Path
 import schedule 
 import time
+import json
 from datetime import datetime
 
 from prettyio.prettyio import PrettyIO
@@ -11,7 +13,7 @@ from filter import Filter
 from messenger import Messenger
 from formatter import Formatter
 
-def application():
+def application(filter_cities):
     io_handler = PrettyIO()
     io_constants = IOConstants()
 
@@ -54,7 +56,7 @@ def application():
     io_handler.write("[info] Parsing finished.")
     io_handler.write("[info] Performing the record filtering against config files and history...")
 
-    filter_handler = Filter(io_handler, io_constants, config, history_handler)
+    filter_handler = Filter(io_handler, io_constants, config, history_handler, filter_cities)
     filtered_records = filter_handler.filter_records(parsed_records)
 
     io_handler.write("[info] Filtering finished.")
@@ -83,8 +85,24 @@ def application():
     # MESSAGE SENDING LOGIC ENDS
 
 if __name__ == "__main__":
-    application()
-    schedule.every(5).minutes.do(application) 
+    # get global configuration
+    absolute_path = str(Path(__file__).absolute())
+    path_to_config_json = absolute_path[:len(absolute_path)-8] + "/config/config.json"
+
+    global_config = {"filter_cities": "true", "interval": 5}
+
+    try:
+        f = open(path_to_config_json)
+        global_config = json.load(f)
+        f.close()
+        print("Global configuration found and accepted.")
+    except Exception as e:
+        print("Global configuration file is corrupt.")
+        print("Continuing with default settings.")
+
+    # run the application
+    application(global_config["filter_cities"])
+    schedule.every(global_config["interval"]).minutes.do(application) 
     
     while True:
         schedule.run_pending() 

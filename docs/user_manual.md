@@ -2,13 +2,15 @@
 
 ## Before Running
 
-Create your _config files_ for the filtering functionality into the subdirectory `./src/config/`. The program exclusively searches **only** for the files named `cities.txt` and `species.txt`.
+Create your _global configuration file_ into the subdirectory `./src/config/`. The program exclusively searches **only** for the file named `config.json`. Enter values for `filter_cities` and `interval`. Give `filter_cities` as a string boolean (e.g. `"true"` or `"false"`) and `interval` as an integer (in minutes).
 
-If a config file is found, the software will only allow those cities and species through. All other records are ignored. **Without config files, all elements will get through**. The config files are therefore so-called "whitelists".
+Create your _filtering files_ for the filtering functionality into the subdirectory `./src/config/filters/`. The program exclusively searches **only** for the files named `cities.txt` and `species.txt`.
 
-Individual entries in the config files should be separated with line breaks. Config files **are not** case-sensitive (applies to both cities and species).
+If a filtering file is found, the software will only allow mentioned cities and species through. All other records are ignored. **Without filtering files, all elements will get through**. The filtering files are therefore so-called "whitelists".
 
-**For example**, config file for city filtering at `./src/config/cities.txt` could look like this:
+Individual entries in the filtering files should be separated with line breaks. Filtering files **are not** case-sensitive (applies to both cities and species).
+
+**For example**, file for city filtering at `./src/config/filters/cities.txt` could look like this:
 
 ```
 Helsinki

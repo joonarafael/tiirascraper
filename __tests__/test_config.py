@@ -34,7 +34,7 @@ def test_config_read_files(temp_files):
     cities_path, _ = temp_files
     config = Config(MockIO(), MockIOConstants())
 
-    config.path = os.path.dirname(cities_path) + "/"
+    config.path_to_filters = os.path.dirname(cities_path) + "/"
 
     config.read_file_cities()
     config.read_file_species()
@@ -46,7 +46,7 @@ def test_config_get_config(temp_files):
     cities_path, _ = temp_files
     config = Config(MockIO(), MockIOConstants())
     
-    config.path = os.path.dirname(cities_path) + "/"
+    config.path_to_filters = os.path.dirname(cities_path) + "/"
 
     result = config.get_config()
 
@@ -59,7 +59,7 @@ def test_config_read_no_files(temp_files):
 
     config.io.messages = []
 
-    config.path = os.path.dirname(cities_path) + "/"
+    config.path_to_filters = os.path.dirname(cities_path) + "/"
 
     os.remove(cities_path)
     os.remove(species_path)
@@ -77,7 +77,7 @@ def test_config_get_no_config(temp_files):
     cities_path, species_path = temp_files
     config = Config(MockIO(), MockIOConstants())
 
-    config.path = os.path.dirname(cities_path) + "/"
+    config.path_to_filters = os.path.dirname(cities_path) + "/"
 
     config.io.messages = []
 

@@ -21,7 +21,7 @@ def filter_instance():
     io = None
     io_constants = None
 
-    return Filter(io, io_constants, config, history_handler)
+    return Filter(io, io_constants, config, history_handler, "true")
 
 @pytest.fixture
 def empty_configs_filter_instance():
@@ -33,7 +33,7 @@ def empty_configs_filter_instance():
     io = None
     io_constants = None
 
-    return Filter(io, io_constants, config, history_handler)
+    return Filter(io, io_constants, config, history_handler, "true")
 
 def test_check_city_against_config(filter_instance, empty_configs_filter_instance):
     assert filter_instance.check_city_against_config("city1 some other data") == True

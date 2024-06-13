@@ -6,13 +6,13 @@ class Config:
         self.io_constants = io_constants
         absolute_path = str(Path(__file__).absolute())
 
-        self.path = absolute_path[:len(absolute_path)-9] + "config/"
+        self.path_to_filters = absolute_path[:len(absolute_path)-10] + "/config/filters/"
 
         self.cities = []
         self.species = []
     
     def read_file_cities(self):
-        self.cities_path = self.path + "cities.txt"
+        self.cities_path = self.path_to_filters + "cities.txt"
 
         try:
             with open(self.cities_path, "r") as f:
@@ -29,7 +29,7 @@ class Config:
             self.io.write(self.io_constants.BOLD + self.io_constants.FG_CYAN + "       Program execution continues without any configured cities.")
 
     def read_file_species(self):
-        self.species_path = self.path + "species.txt"
+        self.species_path = self.path_to_filters + "species.txt"
 
         try:
             with open(self.species_path, "r") as f:
